@@ -36,6 +36,7 @@ public class ManagerViaConcurrency implements Manager {
     public void startDownload(String ... args) {
         createDownloads(args);
         log.fine("Start download");
+
         for (Callable<DownloadViaConcurrency> download : downloadList) {
             executor.submit(download);
         }

@@ -15,14 +15,17 @@ public class Runner {
     public static String[] fileNamesForDownload;
     public static String[] fileNamesForUpload;
 
-
     public static void main(String[] args) {
 
         generateAndClear();
 
-        Manager managerConcurrency = new ManagerViaConcurrency();
+        Manager managerConcurrency = new ManagerViaClassicModel();
         managerConcurrency.startUpload(fileNamesForUpload);
+        System.out.println("aaaaaaa");
+
         managerConcurrency.startDownload(fileNamesForDownload);
+        System.out.println("bbbbbbbbbbb");
+
         managerConcurrency.endSession();
 
     }

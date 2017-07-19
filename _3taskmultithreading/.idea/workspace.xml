@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b7690ac-1408-4f36-b303-4f904ed501bf" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/action/classic_model/DownloadViaClassicModelFromLocal.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/action/classic_model/UploadViaClassicModelToLocale.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/action/concurrency_model/DownloadViaConcurrencyFromLocale.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/action/concurrency_model/UploadViaConcurrencyToLocale.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../2task-multithreading/src/action/classic_model/DownloadViaClassicModelFromLocal.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../2task-multithreading/src/action/classic_model/UploadViaClassicModelToLocale.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../2task-multithreading/src/action/concurrency_model/DownloadViaConcurrencyFromLocale.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../2task-multithreading/src/action/concurrency_model/UploadViaConcurrencyToLocale.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/Runner.class" afterPath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/Runner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/manager/Manager.class" afterPath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/manager/Manager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/manager/ManagerViaClassicModel.class" afterPath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/manager/ManagerViaClassicModel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/manager/ManagerViaConcurrency.class" afterPath="$PROJECT_DIR$/../2task-multithreading/out/production/2task_multithreading/manager/ManagerViaConcurrency.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../2task-multithreading/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/src/Runner.java" afterPath="$PROJECT_DIR$/../2task-multithreading/src/Runner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/src/manager/Manager.java" afterPath="$PROJECT_DIR$/../2task-multithreading/src/manager/Manager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/src/manager/ManagerViaClassicModel.java" afterPath="$PROJECT_DIR$/../2task-multithreading/src/manager/ManagerViaClassicModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../2task-multithreading/src/manager/ManagerViaConcurrency.java" afterPath="$PROJECT_DIR$/../2task-multithreading/src/manager/ManagerViaConcurrency.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -56,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/action/Downloader.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="306">
-              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+              <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#660#661#0" expanded="true" />
@@ -615,7 +600,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/action/Downloader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#660#661#0" expanded="true" />

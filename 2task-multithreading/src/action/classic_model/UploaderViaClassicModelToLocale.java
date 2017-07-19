@@ -1,5 +1,6 @@
 package action.classic_model;
 
+import manager.ManagerViaClassicModel;
 import utils.parser.UselessParser;
 
 import java.io.File;
@@ -12,27 +13,24 @@ import static constant.Constants.UPLOAD_DIR;
 /**
  * Created by Aliaksei_Kisialiou on 7/17/2017.
  */
-public class UploadViaClassicModelToLocale implements UploadViaClassicModel {
-    public volatile static int countFinishedUploads = 0;
+public class UploaderViaClassicModelToLocale implements UploadViaClassicModel {
     private final String fileForUpload;
 
-    public UploadViaClassicModelToLocale(String fileForDownload) {
+    public UploaderViaClassicModelToLocale(String fileForDownload) {
         this.fileForUpload = fileForDownload;
     }
 
     @Override
     public void run() {
-
-        upload(fileForUpload);
-        synchronized (UploadViaClassicModelToLocale.class) {
-            countFinishedUploads++;
+        synchronized (ManagerViaClassicModel.class) {
+            upload(fileForUpload);
+            ManagerViaClassicModel.countFinishedUploads++;
         }
     }
 
     @Override
     public void upload(String file) {
         File localeFile = new File(UPLOAD_DIR + file);
-        synchronized (UploadViaClassicModelToLocale.class) {
             if (localeFile.exists()) {
                 File serverFile = new File(SERVER_DIR + file);
                 File localeFileAfterParse = UselessParser.parseAndCopyTXT(localeFile);
@@ -46,7 +44,6 @@ public class UploadViaClassicModelToLocale implements UploadViaClassicModel {
             else {
                 System.out.println("File " + localeFile.getName() + " not found");
             }
-        }
     }
     private static void copy(File source, File dest) throws IOException {
         Files.copy(source.toPath(), dest.toPath());

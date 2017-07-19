@@ -1,6 +1,4 @@
-import manager.Manager;
 import manager.ManagerViaClassicModel;
-import manager.ManagerViaConcurrency;
 import constant.FileType;
 import utils.GenerateAndDeleteFilesUtils;
 
@@ -11,7 +9,7 @@ import static constant.Constants.*;
  * Created by Aliaksei_Kisialiou on 7/17/2017.
  */
 public class Runner {
-    public static final int NUMBER_FILES_FOR_CREATE = 100;
+    public static final int NUMBER_FILES_FOR_CREATE = 1000;
     public static String[] fileNamesForDownload;
     public static String[] fileNamesForUpload;
 
@@ -19,14 +17,15 @@ public class Runner {
 
         generateAndClear();
 
-        Manager managerConcurrency = new ManagerViaClassicModel();
-        managerConcurrency.startUpload(fileNamesForUpload);
-        System.out.println("aaaaaaa");
-
-        managerConcurrency.startDownload(fileNamesForDownload);
-        System.out.println("bbbbbbbbbbb");
-
-        managerConcurrency.endSession();
+        ManagerViaClassicModel classicModel = new ManagerViaClassicModel();
+        classicModel.openSession();
+        long start = System.currentTimeMillis();
+        classicModel.startUpload(fileNamesForUpload);
+        classicModel.startDownload(fileNamesForDownload);
+        classicModel.closeSession();
+        long finish = System.currentTimeMillis();
+        long timeConsumedMillis = finish - start;
+        System.out.println(timeConsumedMillis);
 
     }
 

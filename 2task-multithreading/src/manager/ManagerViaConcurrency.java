@@ -1,9 +1,9 @@
 package manager;
 
 import action.concurrency_model.DownloadViaConcurrency;
-import action.concurrency_model.DownloadViaConcurrencyFromLocale;
+import action.concurrency_model.DownloaderViaConcurrencyFromLocale;
 import action.concurrency_model.UploadViaConcurrency;
-import action.concurrency_model.UploadViaConcurrencyToLocale;
+import action.concurrency_model.UploaderViaConcurrencyToLocale;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
@@ -27,19 +27,33 @@ public class ManagerViaConcurrency implements Manager {
         log.fine("Create new ManagerViaConcurrency");
         this.downloadList = new ArrayList<>();
         this.uploadList = new ArrayList<>();
-        executor = Executors.newFixedThreadPool(20);
 
     }
 
+    @Override
+    public void openSession() {
+        executor = Executors.newFixedThreadPool(20);
+    }
 
-
-    public void startDownload(String ... args) {
+    @Override
+    public void startDownload(String... args) {
         createDownloads(args);
         log.fine("Start download");
 
         for (Callable<DownloadViaConcurrency> download : downloadList) {
             executor.submit(download);
         }
+        downloadList.clear();
+
+    }
+
+    public void startDownloadAsynch(String ... args) {
+        createDownloads(args);
+        log.fine("Start download");
+        for (Callable<DownloadViaConcurrency> download : downloadList) {
+            executor.submit(download);
+        }
+        downloadList.clear();
     }
 
 
@@ -49,10 +63,22 @@ public class ManagerViaConcurrency implements Manager {
         for (Callable<UploadViaConcurrency> upload : uploadList) {
             executor.submit(upload);
         }
+        downloadList.clear();
+    }
+
+    @Override
+    public void startUploadAsynch(String... args) {
+        createUploads(args);
+        log.fine("Start upload");
+        for (Callable<UploadViaConcurrency> upload : uploadList) {
+            executor.submit(upload);
+        }
+        downloadList.clear();
+
     }
 
 
-    public void endSession() {
+    public void closeSession() {
         executor.shutdown();
         try {
             executor.awaitTermination(Long.MAX_VALUE, TimeUnit.NANOSECONDS);
@@ -65,7 +91,7 @@ public class ManagerViaConcurrency implements Manager {
         log.fine("Start create download");
 
         for (String fileName : args) {
-            DownloadViaConcurrency d = new DownloadViaConcurrencyFromLocale(fileName);
+            DownloadViaConcurrency d = new DownloaderViaConcurrencyFromLocale(fileName);
             downloadList.add(d);
         }
     }
@@ -74,7 +100,7 @@ public class ManagerViaConcurrency implements Manager {
     private void createUploads(String ... args) {
         log.fine("Start create upload");
         for (int i = 0; i < args.length; i++) {
-            UploadViaConcurrency d = new UploadViaConcurrencyToLocale(args[i]);
+            UploadViaConcurrency d = new UploaderViaConcurrencyToLocale(args[i]);
             uploadList.add(d);
         }
     }

@@ -15,12 +15,12 @@ import static constant.Constants.*;
 /**
  * Created by Aliaksei_Kisialiou on 7/18/2017.
  */
-public class UploadViaConcurrencyToLocale implements UploadViaConcurrency {
+public class UploaderViaConcurrencyToLocale implements UploadViaConcurrency {
     public static AtomicInteger countFinishedUpload = new AtomicInteger();
     private final String fileForUpload;
     public final Lock uploadLock = new ReentrantLock();
 
-    public UploadViaConcurrencyToLocale(String fileForDownload)
+    public UploaderViaConcurrencyToLocale(String fileForDownload)
     {
         this.fileForUpload = fileForDownload;
     }

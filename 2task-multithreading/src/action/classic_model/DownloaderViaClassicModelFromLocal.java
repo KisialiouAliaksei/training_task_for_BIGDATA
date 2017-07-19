@@ -1,5 +1,6 @@
 package action.classic_model;
 
+import manager.ManagerViaClassicModel;
 import utils.parser.UselessParser;
 
 import java.io.*;
@@ -11,27 +12,25 @@ import static constant.Constants.SERVER_DIR;
 /**
  * Created by Aliaksei_Kisialiou on 7/17/2017.
  */
-public class DownloadViaClassicModelFromLocal implements DownloadViaClassicModel {
-    public volatile static int countFinishedDownloads = 0;
+public class DownloaderViaClassicModelFromLocal implements DownloadViaClassicModel {
     private final String fileForDownload;
 
-    public DownloadViaClassicModelFromLocal(String fileForDownload) {
+    public DownloaderViaClassicModelFromLocal(String fileForDownload) {
         this.fileForDownload = fileForDownload;
     }
 
 
     @Override
     public void run() {
-        download(fileForDownload);
-        synchronized (DownloadViaClassicModelFromLocal.class) {
-            countFinishedDownloads++;
+        synchronized (ManagerViaClassicModel.class) {
+            download(fileForDownload);
+            ManagerViaClassicModel.countFinishedDownload++;
         }
     }
 
     @Override
     public void download(String fileForDownload) {
         File serverFile = new File(SERVER_DIR + fileForDownload);
-        synchronized (DownloadViaClassicModelFromLocal.class) {
             if (serverFile.exists()) {
                 File downloadFile = new File(DOWNLOAD_DIR + fileForDownload);
                 File serverFileAfterParse = UselessParser.parseAndCopyTXT(serverFile);
@@ -45,7 +44,6 @@ public class DownloadViaClassicModelFromLocal implements DownloadViaClassicModel
             else {
                 System.out.println("File " + serverFile.getName() + " not found");
             }
-        }
     }
     private static void copy(File source, File dest) throws IOException {
         Files.copy(source.toPath(), dest.toPath());
